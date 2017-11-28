@@ -1,6 +1,6 @@
 # 먼지먹고 무임승차 (free ride with dust)
 
-[미세먼지 고농도 시 '서울형 비상저감조치' 시행계획](http://opengov.seoul.go.kr/sanction/12497613)에 따라, 익일 혹은 당일 대중교통 무료 여부를 확인할 수 있는 웹사이트
+[미세먼지 고농도 시 '서울형 비상저감조치' 시행계획](http://opengov.seoul.go.kr/sanction/12497613)에 따라, 익일 혹은 당일 대중교통 무료 여부를 확인할 수 있는 웹사이트 [freeridewithdust.kr](https://freeridewithdust.appspot.com/)
 
 ## DONE:
 
