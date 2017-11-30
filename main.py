@@ -8,7 +8,8 @@ from urllib import urlopen
 
 class MainPage(webapp2.RequestHandler):
     def get_time(self):
-        return datetime.datetime.now()
+        # 'yyyy-mm-dd'
+        return str(datetime.datetime.now()).split(' ')[0]
     def get_average(self):
         f = urlopen(
             'http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureLIst?itemCode=PM25&dataGubun=HOUR&searchCondition=WEEK&pageNo=1&numOfRows=30&_returnType=json&ServiceKey=hFfytrBnh8rAAckaVVfx4io3JRk4hFurd5sM4SUf5Fhnea2dOVy8rUlJrHBxN%2BuZYe5vWIvd0g9NldVJu8Bd3g%3D%3D')
@@ -18,7 +19,7 @@ class MainPage(webapp2.RequestHandler):
         return average
 
     def get_forecast(self):
-        f = urlopen('http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMinuDustFrcstDspth?searchDate=2017-11-26&InformCode=PM25&_returnType=json&ServiceKey=hFfytrBnh8rAAckaVVfx4io3JRk4hFurd5sM4SUf5Fhnea2dOVy8rUlJrHBxN%2BuZYe5vWIvd0g9NldVJu8Bd3g%3D%3D')
+        f = urlopen('http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMinuDustFrcstDspth?searchDate={0}&InformCode=PM25&_returnType=json&ServiceKey=hFfytrBnh8rAAckaVVfx4io3JRk4hFurd5sM4SUf5Fhnea2dOVy8rUlJrHBxN%2BuZYe5vWIvd0g9NldVJu8Bd3g%3D%3D'.format(self.get_time()))
         data = json.load(f)
         s = data['list'][0]['informGrade']
         grade = s.split(',')[0].split(':')[1].strip()
@@ -58,7 +59,6 @@ class MainPage(webapp2.RequestHandler):
 
 <body>
   <div class="bg_Grad01">
-  <p>{0}-{1}-{2}</p>
   <h1>먼지먹고 무임승차</h1>
     <div class="ride_icon">
       <img src="/static/icon_02.png">
@@ -79,7 +79,7 @@ class MainPage(webapp2.RequestHandler):
 
 </html>
 
-                    '''.format(str(dt.year), str(dt.month), str(dt.day)))
+                    ''')
         else:
             self.response.out.write('''
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -108,7 +108,6 @@ class MainPage(webapp2.RequestHandler):
 </style>
 <body>
   <div class="bg_Grad01">
-  <p>{0}-{1}-{2}</p>
   <h1>먼지먹고 무임승차</h1>
     <div class="ride_icon">
       <img src="/static/icon_02.png">
@@ -129,7 +128,7 @@ class MainPage(webapp2.RequestHandler):
 
 </html>
 
-                    '''.format(str(dt.year), str(dt.month), str(dt.day)))
+                    ''')
 
 
 app = webapp2.WSGIApplication([
