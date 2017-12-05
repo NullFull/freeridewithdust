@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# open api key
+config.py
+
+# IDE
+.idea/
