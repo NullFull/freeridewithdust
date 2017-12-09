@@ -105,3 +105,8 @@ config.py
 
 # IDE
 .idea/
+
+# Travis CI
+credentials.tar.gz
+client-secret.json
+api_key.py
