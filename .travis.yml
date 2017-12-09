@@ -1,0 +1,9 @@
+language: python
+python:
+  - "2.7"
+script:
+# [START deploy]
+# Deploy the app
+- gcloud -q preview app deploy app.yaml --promote
+# Run and end to end test
+- python e2e_test.py
