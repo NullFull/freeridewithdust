@@ -7,7 +7,7 @@ from config import OPEN_AIR_KEY
 
 
 '''
-GCS = /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+GCS = /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/dev_appserver.py .
 PATH = $PATH;$GCS/bin;
 PYTHONPATH = 
 '''
@@ -37,19 +37,20 @@ class MainPage(webapp2.RequestHandler):
         return grade
 
     def get(self):
-        dt = self.get_time()
         average = self.get_average()
         forecast = self.get_forecast()
 
         if average > 50 and forecast == u'나쁨':
             data = {
-                'message': 'Yeeah~!',
+                'message': '예 그렇습니다.',
                 'icon': 'icon-on',
+                'state': 'free'
             }
         else:
             data = {
-                'message': 'Nope',
+                'message': '아니오 유료입니다',
                 'icon': 'icon-off',
+                'state': 'pay'
             }
 
         self.response.out.write('''
@@ -64,10 +65,10 @@ class MainPage(webapp2.RequestHandler):
 </head>
 
 <body>
-  <div class="bg_Grad01">
-  <h1>먼지먹고 무임승차</h1>
+  <div class="{state}">
+  <h1>오늘/지금/내일 서울시 대중교통은 무료인가요?</h1>
     <div class="ride_icon">
-      <img src="/static/{icon}.png">
+      <img src="/static/{icon}.svg">
       <p class="ride_nob">
         {message}
       </p>

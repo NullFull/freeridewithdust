@@ -5,18 +5,19 @@ threadsafe: yes
 
 handlers:
 - url: /static
-  static_dir: static/
+  static_dir: freeridewithdust/static/
 - url: .*
-#  script: freeridewithdust.wsgi.application
-  script: main.app
+  script: freeridewithdust.wsgi.application
 
 # Only pure Python libraries can be vendored
 # Python libraries that use C extensions can
 # only be included if they are part of the App Engine SDK
 # Using Third Party Libraries: https://cloud.google.com/appengine/docs/python/tools/using-libraries-python-27
 libraries:
-- name: webapp2
-  version: "2.5.2"
+- name: django
+  version: "1.11"
+#- name: webapp2
+#  version: "2.5.2"
 #- name: MySQLdb
 #  version: 1.2.5
 # [END django_app]
