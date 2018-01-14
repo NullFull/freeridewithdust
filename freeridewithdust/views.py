@@ -1,14 +1,14 @@
 # coding=utf-8
 import json
 from urllib import urlopen
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.conf import settings
 from django.shortcuts import render
 
 
 def get_time():
     # 'yyyy-mm-dd'
-    return str(datetime.now()).split(' ')[0]
+    return str(datetime.now() - timedelta(days=1)).split(' ')[0]
 
 
 def get_average():
@@ -29,7 +29,7 @@ def get_forecast():
             today=get_time(), key=settings.OPEN_AIR_KEY
         ))
     data = json.load(f)
-    s = data['list'][0]['informGrade']
+    s = data['list'][1]['informGrade']
     grade = s.split(',')[0].split(':')[1].strip()
     return grade
 
