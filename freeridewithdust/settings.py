@@ -75,6 +75,15 @@ WSGI_APPLICATION = 'freeridewithdust.wsgi.application'
 # }
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 24 * 60 * 60,
+    }
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
