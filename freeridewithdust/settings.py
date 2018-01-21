@@ -16,11 +16,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'i*w^7np$5=m-z^cil@r%jg&of_2yn4e(nh6fqa-ty1dr%o5ymg'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 OPEN_AIR_KEY = 'BbAZk759xVZiCuDemGXVvWFyGPe%2By0hhGk6oV2iyoOZsBAFiL6muUaEx3KdpHjVjvNHSxGQnqJQOQkbansaOEg%3D%3D'
+
+SEOUL_AIR_KEY = '676d6e5862636d793531575a516e77'
 
 
 INSTALLED_APPS = [

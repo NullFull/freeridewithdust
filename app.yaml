@@ -16,6 +16,8 @@ handlers:
 libraries:
 - name: django
   version: "1.11"
+- name: ssl
+  version: latest
 #- name: webapp2
 #  version: "2.5.2"
 #- name: MySQLdb
