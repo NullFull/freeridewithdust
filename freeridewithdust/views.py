@@ -79,17 +79,18 @@ def get_forecast():
 
 
 def index(request):
-    average = get_average()
-    forecast = get_forecast()
 
-    data = {}
-    if average > 50 and forecast == u'나쁨':
-        data['class'] = 'free'
-        data['icon'] = 'icon-free.svg'
-        data['message'] = u'예 그렇습니다.'
-    else:
-        data['class'] = 'nonfree'
-        data['icon'] = 'icon-nonfree.svg'
-        data['message'] = u'아니오 유료입니다'
+    # average = get_average()
+    # forecast = get_forecast()
+    #
+    # data = {}
+    # if average > 50 and forecast == u'나쁨':
+    #     data['class'] = 'free'
+    #     data['icon'] = 'icon-free.svg'
+    #     data['message'] = u'예 그렇습니다.'
+    # else:
+    #     data['class'] = 'nonfree'
+    #     data['icon'] = 'icon-nonfree.svg'
+    #     data['message'] = u'아니오 유료입니다'
 
-    return render(request, 'index.html', data)
+    return render(request, 'index.html')
